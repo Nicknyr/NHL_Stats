@@ -25,6 +25,10 @@ import Orders from './Orders';
 import { useSelector } from 'react-redux';
 import Roster from './Roster';
 import RangersLogo from '../assets/New_York_Rangers.svg';
+import teams from './Teams';
+import { useLocation } from 'react-router-dom';
+import FranchiseInfo from './FranchiseInfo';
+
 
 function Copyright() {
   return (
@@ -138,6 +142,15 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const location = useLocation();
+  //  '/rangers'
+  const teamWithSlash = location.pathname;
+  // Removes /    '/rangers' becomes 'rangers'
+  const team = teamWithSlash.slice(1, teamWithSlash.length);
+  console.log('team :' + team);
+  const teamImage = `teams.${team}.logo`;
+  console.log('teamImage : ' + teamImage);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -186,13 +199,13 @@ export default function Dashboard() {
             {/* Team Logo */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={[fixedHeightPaper, classes.teamLogo]}>
-                <img src={RangersLogo}/>
+                <img src={teams.rangers.logo}  />
               </Paper>
             </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <FranchiseInfo />
               </Paper>
             </Grid>
             {/* Team Roster */}
