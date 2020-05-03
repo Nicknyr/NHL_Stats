@@ -40,114 +40,176 @@ import CanucksLogo from '../assets/Vancouver_Canucks.svg';
 import GoldenknightsLogo from '../assets/Vegas_Golden_Knights.svg';
 import CapitalsLogo from '../assets/Washington_Capitals.svg';
 import JetsLogo from '../assets/Winnipeg_Jets.svg';
-
+import Link from '@material-ui/core/Link';
 
 export const mainListItems = (
   <div>
     {/* Atlantic Division */}
     <ListSubheader inset>Atlantic Division</ListSubheader>
-    <ListItem button>
-      <img src={BruinsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={SabresLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={RedwingsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={PanthersLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={CanadiensLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={SenatorsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={LightningLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={MapleleafsLogo} height="30"/>
-    </ListItem>
+    <Link href="/bruins">
+      <ListItem button>
+        <img src={BruinsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/sabres">
+      <ListItem button>
+        <img src={SabresLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/redwings">
+      <ListItem button>
+        <img src={RedwingsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/panthers">
+      <ListItem button>
+        <img src={PanthersLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/canadiens">
+      <ListItem button>
+        <img src={CanadiensLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/senators">
+      <ListItem button>
+        <img src={SenatorsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/lightning">
+      <ListItem button>
+        <img src={LightningLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/mapleleafs">
+      <ListItem button>
+        <img src={MapleleafsLogo} height="30"/>
+      </ListItem>
+    </Link>
 
     {/* Metropolitan Division */}
     <ListSubheader inset>Metropolitan Division</ListSubheader>
-    <ListItem button>
-      <img src={HurricanesLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={BluejacketsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={DevilsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={IslandersLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={RangersLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={FlyersLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={PenguinsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={CapitalsLogo} height="30"/>
-    </ListItem>
+    <Link href="/hurricanes">
+      <ListItem button>
+        <img src={HurricanesLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/bluejackets">
+      <ListItem button>
+        <img src={BluejacketsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/devils">
+      <ListItem button>
+        <img src={DevilsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/islanders">
+      <ListItem button>
+        <img src={IslandersLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/rangers">
+      <ListItem button>
+        <img src={RangersLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/flyers">
+      <ListItem button>
+        <img src={FlyersLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/penguins">
+      <ListItem button>
+        <img src={PenguinsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/capitals">
+      <ListItem button>
+        <img src={CapitalsLogo} height="30"/>
+      </ListItem>
+    </Link>
 
     {/* Central Division */}
     <ListSubheader inset>Central Division</ListSubheader>
-    <ListItem button>
-      <img src={BlackhawksLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={AvalancheLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={StarsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={WildLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={PredatorsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={BluesLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={JetsLogo} height="30"/>
-    </ListItem>
+    <Link href="/blackhawks">
+      <ListItem button>
+        <img src={BlackhawksLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/avalanche">
+      <ListItem button>
+        <img src={AvalancheLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/stars">
+      <ListItem button>
+        <img src={StarsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/wild">
+      <ListItem button>
+        <img src={WildLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/predators">
+      <ListItem button>
+        <img src={PredatorsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/blues">
+      <ListItem button>
+        <img src={BluesLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/jets">
+      <ListItem button>
+        <img src={JetsLogo} height="30"/>
+      </ListItem>
+    </Link>
 
     {/* Pacific Division */}
     <ListSubheader inset>Pacific Division</ListSubheader>
-    <ListItem button>
-      <img src={DucksLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={CoyotesLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={FlamesLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={OilersLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={KingsLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={SharksLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={CanucksLogo} height="30"/>
-    </ListItem>
-    <ListItem button>
-      <img src={GoldenknightsLogo} height="30"/>
-    </ListItem>
+    <Link href="/ducks">
+      <ListItem button>
+        <img src={DucksLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/coyotes">
+      <ListItem button>
+        <img src={CoyotesLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/flames">
+      <ListItem button>
+        <img src={FlamesLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/oilers">
+      <ListItem button>
+        <img src={OilersLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/kings">
+      <ListItem button>
+        <img src={KingsLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/sharks">
+      <ListItem button>
+        <img src={SharksLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/canucks">
+      <ListItem button>
+        <img src={CanucksLogo} height="30"/>
+      </ListItem>
+    </Link>
+    <Link href="/goldenknights">
+      <ListItem button>
+        <img src={GoldenknightsLogo} height="30"/>
+      </ListItem>
+    </Link>
   </div>
 );
 

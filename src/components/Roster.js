@@ -22,8 +22,7 @@ export default function Roster() {
     const [data, setData] = useState([]);
     const classes = useStyles();
     const location = useLocation();
-
-    //console.log(location);
+    
     console.log(location.pathname);
 
     useEffect(() => {

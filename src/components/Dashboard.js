@@ -118,6 +118,11 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  teamLogo: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }));
 
 export default function Dashboard() {
@@ -178,9 +183,9 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Recent Deposits */}
+            {/* Team Logo */}
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
+              <Paper className={[fixedHeightPaper, classes.teamLogo]}>
                 <img src={RangersLogo}/>
               </Paper>
             </Grid>
@@ -190,7 +195,7 @@ export default function Dashboard() {
                 <Chart />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* Team Roster */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Roster />
