@@ -34,127 +34,220 @@ import JetsLogo from '../assets/Winnipeg_Jets.svg';
 const teams = {
     devils: {
         id: 1,
-        logo: `${DevilsLogo}`
+        logo: `${DevilsLogo}`,
+        primaryColor: '#ce1126',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     islanders: {
         id: 2,
-        logo: `${IslandersLogo}`
+        logo: `${IslandersLogo}`,
+        primaryColor: '#00539b',
+        secondaryColor: '#f47d30',
+        tertiaryColor: '#FFF'
     },
     rangers: {
         id: 3,
-        logo: `${RangersLogo}`
+        logo: `${RangersLogo}`,
+        primaryColor: '#0038a8',
+        secondaryColor: '#ce1126',
+        tertiaryColor: '#FFF'
     },
     flyers: {
         id: 4,
-        logo: `${FlyersLogo}`
+        logo: `${FlyersLogo}`,
+        primaryColor: '#f74902',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     penguins: {
         id: 5,
-        logo: `${PenguinsLogo}`
+        logo: `${PenguinsLogo}`,
+        primaryColor: '#fcb514',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     bruins: {
         id: 6,
-        logo: `${BruinsLogo}`
+        logo: `${BruinsLogo}`,
+        primaryColor: '#fcb514',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     sabres: {
         id: 7,
-        logo: `${SabresLogo}`
+        logo: `${SabresLogo}`,
+        primaryColor: '#002654',
+        secondaryColor: '#fcb514',
+        tertiaryColor: '#FFF'
     },
     canadiens: {
         id: 8,
-        logo: `${CanadiensLogo}`
+        logo: `${CanadiensLogo}`,
+        primaryColor: '#af1e2d',
+        secondaryColor: '#192168',
+        tertiaryColor: '#FFF'
     },
     senators: {
         id: 9,
-        logo: `${SenatorsLogo}`
+        logo: `${SenatorsLogo}`,
+        primaryColor: '#ce1126',
+        secondaryColor: '#bf910c',
+        tertiaryColor: '#FFF'
     },
     mapleleafs: {
         id: 10,
-        logo: `${MapleleafsLogo}`
+        logo: `${MapleleafsLogo}`,
+        primaryColor: '#00205b',
+        secondaryColor: '#FFF',
+        tertiaryColor: '#FFF'
     },
     hurricanes: {
         id: 12,
-        logo: `${HurricanesLogo}`
+        logo: `${HurricanesLogo}`,
+        primaryColor: '#ce1126',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     panthers: {
         id: 13,
-        logo: `${PanthersLogo}`
+        logo: `${PanthersLogo}`,
+        primaryColor: '#c8102e',
+        secondaryColor: '#b9975b',
+        tertiaryColor: '#FFF'
     },
     lightning: {
         id: 14,
-        logo: `${LightningLogo}`
+        logo: `${LightningLogo}`,
+        primaryColor: '#002868',
+        secondaryColor: '#FFF',
+        tertiaryColor: '#FFF'
     },
     capitals: {
         id: 15,
-        logo: `${CapitalsLogo}`
+        logo: `${CapitalsLogo}`,
+        primaryColor: '#cf0a2c',
+        secondaryColor: '#041e41',
+        tertiaryColor: '#FFF'
     },
     blackhawks: {
         id: 16,
-        logo: `${BlackhawksLogo}`
+        logo: `${BlackhawksLogo}`,
+        primaryColor: '#CF0A2C',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     redwings: {
         id: 17,
-        logo: `${RedwingsLogo}`
+        logo: `${RedwingsLogo}`,
+        primaryColor: '#ce1126',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     predators: {
         id: 18,
-        logo: `${PredatorsLogo}`
+        logo: `${PredatorsLogo}`,
+        primaryColor: '#FFB81C',
+        secondaryColor: '#041E42',
+        tertiaryColor: '#FFF'
     },
     blues: {
         id: 19,
-        logo: `${BluesLogo}`
+        logo: `${BluesLogo}`,
+        primaryColor: '#002f87',
+        secondaryColor: '#002654',
+        tertiaryColor: '#fcb514'
     },
     flames: {
         id: 20,
-        logo: `${FlamesLogo}`
+        logo: `${FlamesLogo}`,
+        primaryColor: '#ce1126',
+        secondaryColor: '#f3bc52',
+        tertiaryColor: '#FFF'
     },
     avalanche: {
         id: 21,
-        logo: `${AvalancheLogo}`
+        logo: `${AvalancheLogo}`,
+        primaryColor: '#6F263D',
+        secondaryColor: '#236192',
+        tertiaryColor: '#FFF'
     },
     oilers: {
         id: 22,
-        logo: `${OilersLogo}`
+        logo: `${OilersLogo}`,
+        primaryColor: '#ff4c00',
+        secondaryColor: '#041e41',
+        tertiaryColor: '#FFF'
     },
     canucks: {
         id: 23,
-        logo: `${CanucksLogo}`
+        logo: `${CanucksLogo}`,
+        primaryColor: '#003d7d',
+        secondaryColor: '#00875B',
+        tertiaryColor: '#FFF'
     },
     ducks: {
         id: 24,
-        logo: `${DucksLogo}`
+        logo: `${DucksLogo}`,
+        primaryColor: '#f95602',
+        secondaryColor: '#b5985a',
+        tertiaryColor: '#111'
     },
     stars: {
         id: 25,
-        logo: `${StarsLogo}`
+        logo: `${StarsLogo}`,
+        primaryColor: '#006847',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     kings: {
         id: 26,
-        logo: `${KingsLogo}`
+        logo: `${KingsLogo}`,
+        primaryColor: '#111',
+        secondaryColor: '#FFF',
+        tertiaryColor: '#FFF'
     },
     sharks: {
         id: 28,
-        logo: `${SharksLogo}`
+        logo: `${SharksLogo}`,
+        primaryColor: '#006d75',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     bluejackets: {
         id: 29,
-        logo: `${BluejacketsLogo}`
+        logo: `${BluejacketsLogo}`,
+        primaryColor: '#002654',
+        secondaryColor: '#ce1126',
+        tertiaryColor: '#FFF'
     },
     wild: {
         id: 30,
-        logo: `${WildLogo}`
+        logo: `${WildLogo}`,
+        primaryColor: '#024930',
+        secondaryColor: '#af1e24',
+        tertiaryColor: '#FFF'
     },
     jets: {
         id: 52,
-        logo: `${JetsLogo}`
+        logo: `${JetsLogo}`,
+        primaryColor: '#041e41',
+        secondaryColor: '#ac162c',
+        tertiaryColor: '#FFF'
     },
     coyotes: {
         id: 53,
-        logo: `${CoyotesLogo}`
+        logo: `${CoyotesLogo}`,
+        primaryColor: '#8c2633',
+        secondaryColor: '#111',
+        tertiaryColor: '#FFF'
     },
     goldenknights: {
         id: 54,
-        logo: `${GoldenknightsLogo}`
+        logo: `${GoldenknightsLogo}`,
+        primaryColor: '#b4975a',
+        secondaryColor: '#333f42',
+        tertiaryColor: '#111'
     },
 
 }
