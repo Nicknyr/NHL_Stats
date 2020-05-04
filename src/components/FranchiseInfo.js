@@ -22,6 +22,7 @@ export default function FranchiseInfo() {
     const [franchiseData, setFranchiseData] = useState('');
     const [venueData, setVenueData] = useState('');
     const [divisionData, setDivisionData] = useState('');
+    const [teamRecordData, setTeamRecordData] = useState('');
     const classes = useStyles();
     
 
@@ -37,10 +38,23 @@ export default function FranchiseInfo() {
                 console.log('Error retrieving franchise data');
             })
     }, [])
-    
 
-    console.log(franchiseData);
-    console.log(venueData);
+    useEffect(() => {
+        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/3/stats?stats=statsSingleSeason&season=20182019
+        `)
+            .then(res => {
+                setTeamRecordData(res.data.stats[0].splits[0].stat);
+                //stats[""0""].splits[""0""].stat
+            })
+            .catch(err => {
+                console.log('Error retrieving team record data');
+            })
+    }, []);
+    
+    console.log(teamRecordData);
+    //console.log(franchiseData);
+    //console.log(venueData);
+    {/* From first call */}
     let division = divisionData.name;
     let stadium = venueData.name;
     let city = venueData.city;
@@ -48,10 +62,15 @@ export default function FranchiseInfo() {
     let enteredLeague = franchiseData.firstYearOfPlay;
     let abbreviation = franchiseData.abbreviation;
     let shortName = franchiseData.shortName;
+    {/* From second call*/}
+    let wins = teamRecordData.wins;
+    let losses = teamRecordData.losses;
+    let ot = teamRecordData.ot;
 
     return (
         <div>
             <Typography variant="h2">{shortName}</Typography>
+            <Typography variant="h5">Record : {wins} - {losses} - {ot}</Typography>
             <Typography variant="h5">Established : {enteredLeague}</Typography>
             <Typography variant="h5">Stadium : {stadium}, {city}</Typography>
             <Typography variant="h5">{division} Division</Typography>

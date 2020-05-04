@@ -17,30 +17,36 @@ const useStyles = makeStyles({
         width: '100%'
     },
   });
+
+  const useFetch = (teamID) => {
+    const [data, setData] = useState(null);
+
+    useEffect(async () => {
+     const response = await fetch(`https://statsapi.web.nhl.com/api/v1/teams/${teamID}/roster`);
+     const data = await response.json();
+     const item = data.results;
+     setData(item);
+    }, []);
+
+    return {data};
+}
  
 
 export default function Roster() {
     const [data, setData] = useState([]);
     const classes = useStyles();
+
+    // Get URL from team page user is on
     const location = useLocation();
+    //  '/islanders'
+    const teamWithSlash = location.pathname;
+    // Removes /    '/islanders' becomes 'islanders'
+    const teamName = teamWithSlash.slice(1, teamWithSlash.length);
 
-    /*
-    console.log(location.pathname);
-
-    const useFetchTeam = () => {
-        const [rosterData, setRosterData] = useState(null);
-
-       useEffect = ((teamID) => {
-            axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teamID}/roster`)
-                .then(res => {
-                    setRosterData(res.data.roster)
-                })
-       }, []);
-    }
-    */
+    //alert(teamID);
     
     useEffect(() => {
-        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams.rangers.id}/roster`)
+        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamName].id}/roster`)
             .then(res => {
                 setData(res.data.roster);
                 console.log(res);
@@ -48,9 +54,11 @@ export default function Roster() {
             .catch(err => {
                 console.log('Error : ' + err);
             })
-    }, []) 
+    }, []); 
+
 
     let roster = Object.values(data);
+    //console.log('data in roster : ' + roster.map(x => x.person));
       
     return (
         <div>
@@ -76,7 +84,6 @@ export default function Roster() {
                     </TableBody>
                 </Table>
             </TableContainer>
-
         </div>
     );
 }
