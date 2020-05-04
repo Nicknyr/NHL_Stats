@@ -24,10 +24,17 @@ export default function FranchiseInfo() {
     const [divisionData, setDivisionData] = useState('');
     const [teamRecordData, setTeamRecordData] = useState('');
     const classes = useStyles();
+
+     // Get URL from team page user is on
+     const location = useLocation();
+     //  '/islanders'
+     const teamWithSlash = location.pathname;
+     // Removes /    '/islanders' becomes 'islanders'
+     const teamNameFromQuery = teamWithSlash.slice(1, teamWithSlash.length);
     
 
     useEffect(() => {
-        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/3`)
+        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamNameFromQuery].id}`)
             .then(res => {
                 setFranchiseData(res.data.teams[0]);
                 setVenueData(res.data.teams[0].venue)
@@ -40,7 +47,7 @@ export default function FranchiseInfo() {
     }, [])
 
     useEffect(() => {
-        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/3/stats?stats=statsSingleSeason&season=20182019
+        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamNameFromQuery].id}/stats?stats=statsSingleSeason&season=20182019
         `)
             .then(res => {
                 setTeamRecordData(res.data.stats[0].splits[0].stat);
