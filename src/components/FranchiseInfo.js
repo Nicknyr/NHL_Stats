@@ -76,7 +76,7 @@ export default function FranchiseInfo() {
 
     return (
         <div>
-            <Typography variant="h2">{shortName}</Typography>
+            <Typography variant="h2">{teamName}</Typography>
             <Typography variant="h5">Record : {wins} - {losses} - {ot}</Typography>
             <Typography variant="h5">Established : {enteredLeague}</Typography>
             <Typography variant="h5">Stadium : {stadium}, {city}</Typography>

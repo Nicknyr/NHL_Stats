@@ -199,7 +199,7 @@ export default function Dashboard() {
             {/* Team Logo */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={[fixedHeightPaper, classes.teamLogo]}>
-                <img src={teams.rangers.logo}  />
+                <img src={teams[team].logo}  />
               </Paper>
             </Grid>
             {/* Chart */}
