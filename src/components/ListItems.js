@@ -3,11 +3,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import DucksLogo from '../assets/Anaheim_Ducks.svg';
 import CoyotesLogo from '../assets/Arizona_Coyotes.svg';
@@ -239,6 +234,12 @@ export const secondaryListItems = (
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Shutouts" />
+    </ListItem>
+    <ListSubheader inset>Leader Boards</ListSubheader>
+    <ListItem button>
+      <Link href="/awards">
+        <ListItemText primary="NHL Awards" />
+      </Link>
     </ListItem>
   </div>
 );

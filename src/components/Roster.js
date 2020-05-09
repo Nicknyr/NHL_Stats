@@ -56,9 +56,30 @@ export default function Roster() {
             })
     }, []); 
 
+    let playerArr = [];
+
+    let playerNames = Object.values(data).map((x) => {
+         return x.person.link;
+    });
+
+    /*
+    useEffect(() => {
+        axios.get(`https://statsapi.web.nhl.com/api/v1/people/8476459`)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log('Error retrieiving player stats');
+            })
+    });
+
+
+    let playerIDs = Object.values(data).map((x) => {
+        playerArr.push(x.person.id);
+    });
+    */
 
     let roster = Object.values(data);
-    //console.log('data in roster : ' + roster.map(x => x.person));
       
     return (
         <div>
@@ -69,6 +90,12 @@ export default function Roster() {
                         <TableCell align="left">#</TableCell>
                         <TableCell align="left">Name</TableCell>
                         <TableCell align="left">Position</TableCell>
+                        <TableCell align="left">Points</TableCell>
+                        <TableCell align="left">Goals</TableCell>
+                        <TableCell align="left">Assists</TableCell>
+                        <TableCell align="left">+/-</TableCell>
+                        <TableCell align="left">TOI</TableCell>
+                        <TableCell align="left">PM</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>

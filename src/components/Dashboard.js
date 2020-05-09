@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
@@ -14,34 +13,22 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+//import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
 import { useSelector } from 'react-redux';
 import Roster from './Roster';
-import RangersLogo from '../assets/New_York_Rangers.svg';
 import teams from './Teams';
-import { useLocation } from 'react-router-dom';
 import FranchiseInfo from './FranchiseInfo';
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Awards from './Awards';
+import { Switch, Route, Link, useLocation } from "react-router-dom";
+import InputBase from "@material-ui/core/InputBase";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import SearchIcon from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button";
+import { useChangeTheme } from "./Theme";
 
 const drawerWidth = 240;
 
@@ -131,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+  const changeTheme = useChangeTheme();
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
@@ -147,9 +135,17 @@ export default function Dashboard() {
   const teamWithSlash = location.pathname;
   // Removes /    '/rangers' becomes 'rangers'
   const team = teamWithSlash.slice(1, teamWithSlash.length);
-  console.log('team :' + team);
+  const firstLetterOfTeam = team.charAt(0).toUpperCase();
+  const restOfTeamLetters = team.slice(1, team.length);
+  const teamCapitalized = firstLetterOfTeam + restOfTeamLetters;
   const teamImage = `teams.${team}.logo`;
-  console.log('teamImage : ' + teamImage);
+
+  // Applies theme based on
+  React.useEffect(() => {
+    let path = location && location.pathname.split("/");
+    let team = path && path[1];
+    changeTheme({ colors: team.toUpperCase() });
+  }, [changeTheme, location]);
 
   return (
     <div className={classes.root}>
@@ -166,13 +162,8 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {teamCapitalized} Team Stats
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -199,24 +190,24 @@ export default function Dashboard() {
             {/* Team Logo */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={[fixedHeightPaper, classes.teamLogo]}>
-                <img src={teams[team].logo}  />
+                {/*location === '/' ? '' : <img src={teams[team].logo}/> */}
               </Paper>
             </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <FranchiseInfo />
+                {/*location === '/' ? '' : <FranchiseInfo /> */}
               </Paper>
             </Grid>
             {/* Team Roster */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Roster />
+                {/*location === '/' ? '' : <Roster /> */}
               </Paper>
             </Grid>
           </Grid>
           <Box pt={4}>
-            <Copyright />
+             {/* Footer */}
           </Box>
         </Container>
       </main>
