@@ -13,10 +13,8 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-//import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems';
 import { useSelector } from 'react-redux';
 import Roster from './Roster';
@@ -99,20 +97,27 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    background: theme.palette.primary.main
   },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    background: theme.palette.secondary.main,
+    color: 'snow',
+    fontWeight: 'bold'
   },
   fixedHeight: {
-    height: 240,
+    height: 240
   },
   teamLogo: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  rosterContainer: {
+    background: theme.palette.secondary.main
   }
 }));
 
@@ -146,6 +151,7 @@ export default function Dashboard() {
     let team = path && path[1];
     changeTheme({ colors: team.toUpperCase() });
   }, [changeTheme, location]);
+
 
   return (
     <div className={classes.root}>
@@ -189,20 +195,20 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Team Logo */}
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={[fixedHeightPaper, classes.teamLogo]}>
-                {/*location === '/' ? '' : <img src={teams[team].logo}/> */}
+              <Paper className={[fixedHeightPaper, classes.teamLogo]} elevation="10">
+                {location === '/' ? '' : <img src={teams[team].logo}/>} 
               </Paper>
             </Grid>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                {/*location === '/' ? '' : <FranchiseInfo /> */}
+              <Paper className={fixedHeightPaper} elevation="10">
+                {location === '/' ? '' : <FranchiseInfo />}  
               </Paper>
             </Grid>
             {/* Team Roster */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                {/*location === '/' ? '' : <Roster /> */}
+              <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
+                {location === '/' ? '' : <Roster />}
               </Paper>
             </Grid>
           </Grid>
