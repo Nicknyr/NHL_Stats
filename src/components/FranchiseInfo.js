@@ -56,7 +56,7 @@ export default function FranchiseInfo() {
             })
     }, []);
     
-    console.log(teamRecordData);
+    //console.log(teamRecordData);
     //console.log(franchiseData);
     //console.log(venueData);
     {/* From first call */}
