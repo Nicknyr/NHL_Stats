@@ -12,6 +12,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Dashboard from './components/Dashboard';
+import LandingPage from './components/LandingPage';
 import { ThemeProvider } from "./components/Theme";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -26,7 +27,7 @@ ReactDOM.render(
       <ThemeProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/awards" component={Awards} />
             <Route exact path="/bruins" component={Dashboard} />
             <Route exact path="/sabres" component={Dashboard} />

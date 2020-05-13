@@ -27,12 +27,18 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
 import { useChangeTheme } from "./Theme";
+import Footer from './Footer';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Icon from '@material-ui/core/Icon';
+import TeamStats from './TeamStats';
+
+
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -71,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
+    background: '#181818',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -91,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
+    height: '100%',
     overflow: 'auto',
   },
   container: {
@@ -118,6 +125,9 @@ const useStyles = makeStyles((theme) => ({
   },
   rosterContainer: {
     background: theme.palette.secondary.main
+  },
+  teamLogos: {
+  
   }
 }));
 
@@ -153,7 +163,10 @@ export default function Dashboard() {
   }, [changeTheme, location]);
 
 
+
+
   return (
+    <>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -181,11 +194,11 @@ export default function Dashboard() {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon/>
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List className={classes.teamLogos}>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
@@ -205,6 +218,10 @@ export default function Dashboard() {
                 {location === '/' ? '' : <FranchiseInfo />}  
               </Paper>
             </Grid>
+            {/* Team Stats */}
+            <Grid container spacing={3}>
+              <TeamStats />
+            </Grid>
             {/* Team Roster */}
             <Grid item xs={12}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
@@ -212,12 +229,11 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-             {/* Footer */}
-          </Box>
         </Container>
       </main>
     </div>
+    <Footer />
+    </>
   );
 }
 

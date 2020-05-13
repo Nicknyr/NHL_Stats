@@ -20,14 +20,16 @@ const useStyles = makeStyles((theme) => ({
     },
     tableContent: {
         color: 'snow'
+    },
+    paper: {
+        
     }
   }));
 
 export default function Roster() {
-    const [data, setData] = useState([]);
-    const [playerIDNumbers, setPlayerIDNumbers] = useState([]);
     const classes = useStyles();
     const [players, setPlayerData] = useState([]);
+    const [playerStats, setPlayerStats] = useState([]);
 
     // Get URL from team page user is on
     const location = useLocation();
@@ -44,23 +46,26 @@ export default function Roster() {
         .then(async ids => {
             const people = Promise.all(ids.map(id => axios.get(`https://statsapi.web.nhl.com/api/v1/people/${id}/`)))
 
-            const stats = Promise.all(ids.map(id => axios.get(`https://statsapi.web.nhl.com/api/v1/people/${id}/stats?stats=statsSingleSeason&season=20182019`
+            const stats = Promise.all(ids.map(id => axios.get(`https://statsapi.web.nhl.com/api/v1/people/${id}/stats?stats=statsSingleSeason&season=20192020`
             )));
     
             return Promise.all([people, stats]);
         })
         .then(promise => {
-            console.log('promise in then ' + promise);
             let data = Object.values(promise[0]).map((x, index) => {
                 return x.data.people;
             });
             setPlayerData(data);
+
+            let statsData = Object.values(promise[1]).map((x, index) => {
+                return x.data.stats;
+            });
+            setPlayerStats(statsData);
         })
         .catch(err => {
             console.log('Error : ' + err);
         })
     }, []);
-
 
    // Theme
    const changeTheme = useChangeTheme();
@@ -72,6 +77,42 @@ export default function Roster() {
     }, [changeTheme, location]);
 
     let player = players;
+    let stats = playerStats;
+
+    //console.log(stats);
+    /*
+    let infoSection = Object.values(player).map((player, key) => {
+        return (
+            <>
+                <TableCell align="left" className={classes.tableContent}>{player[0].primaryNumber}</TableCell>
+                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{player[0].fullName}</TableCell>
+                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
+            </>
+        );
+    });
+
+    let statSection = Object.values(stats).map((x, key) => {
+        return (
+            <>
+                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.points}</TableCell>
+                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{x[0].splits[0].stat.goals}</TableCell>
+                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.assists}</TableCell>
+            </>
+        );
+    });
+
+    let infoSection2 = Object.values(player).map((player, key) => {
+        return (
+            <>
+                <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>
+                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{player[0].height}</TableCell>
+                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.weight}</TableCell>
+                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.nationality}</TableCell>
+            </>
+        );
+    });
+
+    */
 
     return (
         <div>
@@ -96,24 +137,24 @@ export default function Roster() {
                     </TableHead>
                     <TableBody>
                     {Object.values(player).map((player, key) => (
-                        <TableRow key={key}>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].primaryNumber}</TableCell>
-                        <TableCell component="th" scope="row" align="left" className={classes.tableContent}>
-                            {player[0].fullName}
-                        </TableCell>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>points</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>goals</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>assists</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>+/-</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>toi</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>penalties</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].height}</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].weight}</TableCell>
-                        <TableCell align="left" className={classes.tableContent}>{player[0].nationality}</TableCell>
+                        <TableRow>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].primaryNumber}</TableCell>
+                            <TableCell align="left" component="th" scope="row"  className={classes.tableContent}>
+                                {player[0].fullName}
+                            </TableCell>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].height}</TableCell>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].weight}</TableCell>
+                            <TableCell align="left" className={classes.tableContent}>{player[0].nationality}</TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
+                            <TableCell align="left" className={classes.tableContent}></TableCell>
                         </TableRow>
-                    ))}
+                    ))};
                     </TableBody>
                 </Table>
             </TableContainer>

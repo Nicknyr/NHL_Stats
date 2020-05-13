@@ -221,8 +221,8 @@ const DispatchContext = React.createContext(() => {
           break;
         default:
           palette = {
-            primary: { main: "#673ab7" },
-            secondary: { main: "#111" }
+            primary: { main: "#181818" },
+            secondary: { main: "#1F1F1F" }
           };
           break;
       }

@@ -4,6 +4,11 @@ import './App.css';
 import Dashboard from './components/Dashboard';
 import { Router, Route, Switch } from 'react-router-dom';
 import Roster from './components/Roster';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab, faStackOverflow, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+ 
+library.add(fab, faCheckSquare, faCoffee, faStackOverflow, faGithub, faLinkedin);
 
 function App() {
   return (

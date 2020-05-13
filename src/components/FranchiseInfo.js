@@ -38,6 +38,7 @@ export default function FranchiseInfo() {
                 setVenueData(res.data.teams[0].venue)
                 setDivisionData(res.data.teams[0].division);
                 //console.log('franchise response : ' + res.teams.name);
+                console.log('franchise data : ' + res.data.teams[0]);
             })
             .catch(err => {
                 console.log('Error retrieving franchise data');
@@ -45,7 +46,7 @@ export default function FranchiseInfo() {
     }, [])
 
     useEffect(() => {
-        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamNameFromQuery].id}/stats?stats=statsSingleSeason&season=20182019
+        axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamNameFromQuery].id}/stats?stats=statsSingleSeason&season=20192020
         `)
             .then(res => {
                 setTeamRecordData(res.data.stats[0].splits[0].stat);
