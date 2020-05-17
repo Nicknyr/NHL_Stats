@@ -13,6 +13,7 @@ import Button from "@material-ui/core/Button";
 import { useChangeTheme } from "./Theme";
 import axios from 'axios';
 import teams from './Teams';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -70,11 +71,7 @@ export default function TeamStats() {
             })
     }, []);
 
-    /*
-    let stats = Object.entries(teamStats).map((stat) => {
-        console.log(stat);
-    })
-    */
+
     /*
    gamesPlayed: 71
    wins: 17
@@ -141,62 +138,96 @@ export default function TeamStats() {
         <Container maxWidth="lg" className={classes.container}>
             <Grid container xs={12}  spacing={3}>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Goals Per Game</Typography>
-                            <Typography variant="body1">{teamStats.goalsPerGame}</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.goalsPerGame} in league</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Goals Per Game</Typography>
+                                <Typography variant="h3">{teamStats.goalsPerGame}</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.goalsPerGame} in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Goals Against Per Game</Typography>
-                            <Typography variant="body1">{teamStats.goalsAgainstPerGame}</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.goalsAgainstPerGame} in league</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Goals Against Per Game</Typography>
+                                <Typography variant="h3">{teamStats.goalsAgainstPerGame}</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.goalsAgainstPerGame} in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper  elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Point %</Typography>
-                            <Typography variant="body1">{teamStats.ptPctg}</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.ptPctg} in league</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Point Percentage</Typography>
+                                <Typography variant="h3">{teamStats.ptPctg}</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.ptPctg} in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper  elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Power Play</Typography>
-                            <Typography variant="h5">{teamStats.powerPlayPercentage}%</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.powerPlayPercentage}  best PP in league</Typography>
-                            <Typography variant="body1">{teamStats.powerPlayGoals} goals on {teamStats.powerPlayOpportunities} attempts</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.powerPlayOpportunities} most penalties drawn in league</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Power Play</Typography>
+                                <Typography variant="h3">{teamStats.powerPlayPercentage}%</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.powerPlayPercentage}  best PP in league</Typography>
+                                <Typography variant="body1">{teamStats.powerPlayGoals} goals on {teamStats.powerPlayOpportunities} attempts</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.powerPlayOpportunities} most penalties drawn in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper  elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Penalty Kill</Typography>
-                            <Typography variant="h5">{teamStats.penaltyKillPercentage}%</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.penaltyKillPercentage} best PK in league</Typography>
-                            <Typography variant="body1">{teamStats.powerPlayGoalsAgainst} goals against</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.penaltyKillOpportunities} most penalized team</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Penalty Kill</Typography>
+                                <Typography variant="h3">{teamStats.penaltyKillPercentage}%</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.penaltyKillPercentage} best PK in league</Typography>
+                                <Typography variant="body1">{teamStats.powerPlayGoalsAgainst} goals against</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.penaltyKillOpportunities} most penalized team</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
                 <Grid item xs={12} md={12} lg={4}>
-                    <Paper  elevation="10" className={classes.paper}>
-                        <Box align="center">
-                            <Typography variant="h5">Face Offs</Typography>
-                            <Typography variant="h5">{teamStats.faceOffWinPercentage}%</Typography>
-                            <Typography variant="body1">{teamPlaceInLeague.faceOffWinPercentage} best in league</Typography>
-                        </Box>
-                    </Paper>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Face Offs</Typography>
+                                <Typography variant="h3">{teamStats.faceOffWinPercentage}%</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.faceOffWinPercentage} best in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
+                </Grid>
+                <Grid item xs={12} md={12} lg={4}>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Save Percentage</Typography>
+                                <Typography variant="h3">{teamStats.savePctg}%</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.savePctRank} best in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
+                </Grid>
+                <Grid item xs={12} md={12} lg={4}>
+                    <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                        <Paper  elevation="10" className={classes.paper}>
+                            <Box align="center">
+                                <Typography variant="h5">Shooting Percentage</Typography>
+                                <Typography variant="h3">{teamStats.shootingPctg}%</Typography>
+                                <Typography variant="body1">{teamPlaceInLeague.shootingPctRank} best in league</Typography>
+                            </Box>
+                        </Paper>
+                    </ScrollAnimation>
                 </Grid>
             </Grid>
         </Container>

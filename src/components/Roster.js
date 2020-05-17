@@ -60,7 +60,12 @@ export default function Roster() {
             let statsData = Object.values(promise[1]).map((x, index) => {
                 return x.data.stats;
             });
-            setPlayerStats(statsData);
+        
+            let nestedStatsData = statsData.map((x) => {
+                return x[0].splits;
+            });
+
+            setPlayerStats(nestedStatsData);
         })
         .catch(err => {
             console.log('Error : ' + err);
@@ -79,40 +84,19 @@ export default function Roster() {
     let player = players;
     let stats = playerStats;
 
-    //console.log(stats);
-    /*
-    let infoSection = Object.values(player).map((player, key) => {
-        return (
-            <>
-                <TableCell align="left" className={classes.tableContent}>{player[0].primaryNumber}</TableCell>
-                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{player[0].fullName}</TableCell>
-                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
-            </>
-        );
+    console.log(playerStats);
+
+    let data = playerStats.map((x) => {
+       return x[0];
+    })
+
+    let data2 = data.map((x) => {
+        return x;
     });
 
-    let statSection = Object.values(stats).map((x, key) => {
-        return (
-            <>
-                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.points}</TableCell>
-                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{x[0].splits[0].stat.goals}</TableCell>
-                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.assists}</TableCell>
-            </>
-        );
-    });
+    console.log(data2);
 
-    let infoSection2 = Object.values(player).map((player, key) => {
-        return (
-            <>
-                <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>
-                <TableCell component="th" scope="row" align="left" className={classes.tableContent}>{player[0].height}</TableCell>
-                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.weight}</TableCell>
-                <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.nationality}</TableCell>
-            </>
-        );
-    });
-
-    */
+    let blah = data2.forEach((item) => console.log(item.stat.points));
 
     return (
         <div>
@@ -143,18 +127,21 @@ export default function Roster() {
                                 {player[0].fullName}
                             </TableCell>
                             <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
+                            {Object.values(stats).map((x, key) => (
+                                <>
+                                {/*
+                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.points}</TableCell>
+                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.goals}</TableCell>
+                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.assists}</TableCell>
+                                */}
+                                </>
+                            ))}
                             <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>
                             <TableCell align="left" className={classes.tableContent}>{player[0].height}</TableCell>
                             <TableCell align="left" className={classes.tableContent}>{player[0].weight}</TableCell>
                             <TableCell align="left" className={classes.tableContent}>{player[0].nationality}</TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
-                            <TableCell align="left" className={classes.tableContent}></TableCell>
                         </TableRow>
-                    ))};
+                    ))}
                     </TableBody>
                 </Table>
             </TableContainer>

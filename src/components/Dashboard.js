@@ -31,8 +31,7 @@ import Footer from './Footer';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Icon from '@material-ui/core/Icon';
 import TeamStats from './TeamStats';
-
-
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const drawerWidth = 240;
 
@@ -207,27 +206,35 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Team Logo */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={[fixedHeightPaper, classes.teamLogo]} elevation="10">
-                {location === '/' ? '' : <img src={teams[team].logo}/>} 
-              </Paper>
-            </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                  <Paper className={[fixedHeightPaper, classes.teamLogo]} elevation="10">
+                    {location === '/' ? '' : <img src={teams[team].logo}/>} 
+                  </Paper>
+                </ScrollAnimation>
+              </Grid>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper} elevation="10">
-                {location === '/' ? '' : <FranchiseInfo />}  
-              </Paper>
-            </Grid>
+              <Grid item xs={12} md={8} lg={9}>
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                  <Paper className={fixedHeightPaper} elevation="10">
+                    {location === '/' ? '' : <FranchiseInfo />}  
+                  </Paper>
+                </ScrollAnimation>
+              </Grid>
             {/* Team Stats */}
-            <Grid container spacing={3}>
-              <TeamStats />
-            </Grid>
+              <Grid container spacing={3}>
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                  <TeamStats />
+                </ScrollAnimation>
+              </Grid>
             {/* Team Roster */}
-            <Grid item xs={12}>
-              <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
-                {location === '/' ? '' : <Roster />}
-              </Paper>
-            </Grid>
+              <Grid item xs={12}>
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                  <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
+                    {location === '/' ? '' : <Roster />}
+                  </Paper>
+                </ScrollAnimation>
+              </Grid>
           </Grid>
         </Container>
       </main>

@@ -29,6 +29,11 @@ import { flexbox } from '@material-ui/system';
 import EasternConference from '../assets/NHL_Eastern_Conference.svg';
 import WesternConference from '../assets/NHL_Western_Conference.svg';
 import { dom } from '@fortawesome/fontawesome-svg-core';
+import HistoryIcon from '@material-ui/icons/History';
+import SportsHockeyIcon from '@material-ui/icons/SportsHockey';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const drawerWidth = 240;
 
@@ -188,6 +193,7 @@ export default function Dashboard() {
               <Paper className={fixedHeightPaper} elevation="10" >
                 <Box align="center">
                     <Typography variant="h1">NHL Stats</Typography>
+                    <SportsHockeyIcon style={{ fontSize: 80 }} />
                     <Typography variant="h5">Up-to-date stats pulled directly from the NHL's database.</Typography>
                     <Typography variant="h5">Search stats by team or view leaderboards or historical stats</Typography>
                 </Box>
@@ -215,6 +221,7 @@ export default function Dashboard() {
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
                     <Typography variant="h6">Leaderboards</Typography>
+                    <EmojiEventsIcon style={{ fontSize: 50 }} />
                 </Box>
               </Paper>
             </Grid>
@@ -222,13 +229,15 @@ export default function Dashboard() {
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
                     <Typography variant="h6">Team Stats</Typography>
+                    <BarChartIcon style={{ fontSize: 50 }} />
                 </Box>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Historical Stats</Typography>
+                    <Typography variant="h5">Historical Stats</Typography>
+                    <HistoryIcon color="red" style={{ fontSize: 50 }} />
                 </Box>
               </Paper>
             </Grid>
@@ -236,6 +245,10 @@ export default function Dashboard() {
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
                     <Typography variant="h6">Goal Leader</Typography>
+                    <FontAwesomeIcon
+                          icon="hockey-puck"
+                          size="3x"
+                      />
                 </Box>
               </Paper>
             </Grid>
@@ -243,6 +256,10 @@ export default function Dashboard() {
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
                     <Typography variant="h6">Points Leader</Typography>
+                    <FontAwesomeIcon
+                          icon="hockey-puck"
+                          size="3x"
+                      />
                 </Box>
               </Paper>
             </Grid>
@@ -250,6 +267,10 @@ export default function Dashboard() {
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
                     <Typography variant="h6">Shutouts Leader</Typography>
+                    <FontAwesomeIcon
+                          icon="times"
+                          size="3x"
+                      />
                 </Box>
               </Paper>
             </Grid>
