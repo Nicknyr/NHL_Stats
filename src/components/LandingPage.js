@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,6 +34,7 @@ import SportsHockeyIcon from '@material-ui/icons/SportsHockey';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 
 const drawerWidth = 240;
 
@@ -126,7 +127,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const changeTheme = useChangeTheme();
-  const [open, setOpen] = React.useState(true);
+  const [easternConferenceLeader, setEasternConferenceLeader] = useState();
+  const [westernConferenceLeader, setWesternConferenceLeader] = useState();
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -146,8 +149,49 @@ export default function Dashboard() {
     changeTheme({ colors: team.toUpperCase() });
   }, [changeTheme, location]);
 
+  useEffect(() => {
+    async function fetchData() {
+      axios.get(`https://statsapi.web.nhl.com/api/v1/standings/byConference`)
+      .then(res => {
+        // 0th element is Eastern Conference leader, 1th is Western Conference Leader
+        let teamEndpoint = Object.values(res.data.records).map((x) => x.teamRecords[0].team.link);
+        // Eastern Conference team API endpoint
+        let eastern = teamEndpoint[0];
+        // Western Conference team API endpoint
+        let western = teamEndpoint[1];
 
-  return (
+        let teamEndpointMap = console.log(teamEndpoint.map((x) => x));
+       
+        console.log('eastern : ' + eastern);
+        console.log('western : ' + western);
+        console.log('teamEndpoint[0] : ' + teamEndpoint[0]);
+        console.log('teamEndpoint[1] : ' + teamEndpoint[1]);
+
+        // Get Eastern Conference Leader team's name
+        axios.get(`https://statsapi.web.nhl.com${eastern}/`)
+          .then(res => {
+            setEasternConferenceLeader(res.data.teams[0].teamName);
+          })
+          .catch(err => {
+            console.log('Error retrieving Eastern Conference Team data : ' + err);
+          });
+        // Get Eastern Conference Leader team's name
+        axios.get(`https://statsapi.web.nhl.com${western}/`)
+        .then(res => {
+          setWesternConferenceLeader(res.data.teams[0].teamName);
+        })
+        .catch(err => {
+          console.log('Error retrieving Western Conference Team data : ' + err);
+        });
+      })
+    }
+    fetchData();
+  }, []);
+
+    let team1 = easternConferenceLeader;
+    let team2 = westernConferenceLeader;
+
+  return (    
     <>
     <div className={classes.root}>
       <CssBaseline />
@@ -203,8 +247,10 @@ export default function Dashboard() {
             <Grid item xs={12} md={6}>
                 <Paper className={classes.paper} elevation="10">
                     <Box align="center">
-                        <img src={WesternConference} height="100" alt="Western Conference Logo" />
-                        <Typography variant="h4">Best in the West</Typography>
+                       <img src={WesternConference} height="100" alt="Western Conference Logo" />
+                       <Typography variant="h4">Best in the West</Typography>
+                       <p>{teams.westernConferenceLeader.primaryColor}</p>
+                       {/*<img src={teams.westernConferenceLeader.logo}/>*/}
                     </Box>
                 </Paper>
             </Grid>
@@ -213,6 +259,7 @@ export default function Dashboard() {
                     <Box align="center">
                         <img src={EasternConference} height="100" alt="Eastern Conference Logo" />
                         <Typography variant="h4">Beast in the East</Typography>
+                        <img src={teams.bruins.logo} />
                     </Box>
                 </Paper>
             </Grid>
@@ -220,7 +267,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Leaderboards</Typography>
+                    <Typography variant="h5">Leaderboards</Typography>
                     <EmojiEventsIcon style={{ fontSize: 50 }} />
                 </Box>
               </Paper>
@@ -228,7 +275,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Team Stats</Typography>
+                    <Typography variant="h5">Team Stats</Typography>
                     <BarChartIcon style={{ fontSize: 50 }} />
                 </Box>
               </Paper>
@@ -244,7 +291,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Goal Leader</Typography>
+                    <Typography variant="h5">Goal Leader</Typography>
                     <FontAwesomeIcon
                           icon="hockey-puck"
                           size="3x"
@@ -255,7 +302,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Points Leader</Typography>
+                    <Typography variant="h5">Points Leader</Typography>
                     <FontAwesomeIcon
                           icon="hockey-puck"
                           size="3x"
@@ -266,7 +313,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={4}>
               <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                 <Box align="center">
-                    <Typography variant="h6">Shutouts Leader</Typography>
+                    <Typography variant="h5">Shutouts Leader</Typography>
                     <FontAwesomeIcon
                           icon="times"
                           size="3x"

@@ -28,20 +28,9 @@ import { mainListItems, secondaryListItems } from './ListItems';
 import { useLocation } from 'react-router-dom';
 import FranchiseInfo from './FranchiseInfo';
 import Awards from './Awards';
+import AwardsModal from './AwardsModal';
+import Footer from './Footer';
 
-
-function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
   
   const drawerWidth = 240;
   
@@ -106,7 +95,7 @@ function Copyright() {
     appBarSpacer: theme.mixins.toolbar,
     content: {
       flexGrow: 1,
-      height: '100vh',
+      height: '100%',
       overflow: 'auto',
     },
     container: {
@@ -155,7 +144,7 @@ function Copyright() {
             <CardActionArea>
               <CardMedia
                 component="img"
-                alt="Contemplative Reptile"
+                alt="Award information"
                 height="300"
                 image={award.imageUrl}
                 title={award.name}
@@ -175,9 +164,12 @@ function Copyright() {
               </CardContent>
             </CardActionArea>
             <CardActions>
+              <AwardsModal />
+              {/*
               <Button size="small" color="primary">
                 Learn More
               </Button>
+              */}
             </CardActions>
           </Card>
         );
@@ -199,58 +191,59 @@ function Copyright() {
     const location = useLocation();
     
     return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              NHL Awards
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}>
-              {/* Awards */}
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  {awards}
-                </Paper>
+      <>
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <Toolbar className={classes.toolbar}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                NHL Awards
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+            }}
+            open={open}
+          >
+            <div className={classes.toolbarIcon}>
+              <IconButton onClick={handleDrawerClose}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <List>{mainListItems}</List>
+            <Divider />
+            <List>{secondaryListItems}</List>
+          </Drawer>
+          <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            <Container maxWidth="lg" className={classes.container}>
+              <Grid container spacing={3}>
+                {/* Awards */}
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                    {awards}
+                  </Paper>
+                </Grid>
               </Grid>
-            </Grid>
-            <Box pt={4}>
-              <Copyright />
-            </Box>
-          </Container>
-        </main>
-      </div>
+            </Container>
+          </main>
+        </div>
+        <AwardsModal />
+      <Footer />
+      </>
     );
   }
   

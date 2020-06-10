@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import teams from './Teams';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles({
@@ -75,11 +76,13 @@ export default function FranchiseInfo() {
 
     return (
         <div>
-            <Typography variant="h2">{teamName}</Typography>
-            <Typography variant="h5">Record : {wins} - {losses} - {ot}</Typography>
-            <Typography variant="h5">Established : {enteredLeague}</Typography>
-            <Typography variant="h5">Stadium : {stadium}, {city}</Typography>
-            <Typography variant="h5">{division} Division</Typography>
+            <Box align="center">
+                <Typography variant="h2" align="left">{teamName}</Typography>
+                <Typography variant="h4" align="left">Record : {wins} - {losses} - {ot}</Typography>
+                <Typography variant="h6" align="left">Established : {enteredLeague}</Typography>
+                <Typography variant="h6" align="left">Stadium : {stadium}, {city}</Typography>
+                <Typography variant="h6" align="left">{division} Division</Typography>
+            </Box>
         </div>
     );
 }

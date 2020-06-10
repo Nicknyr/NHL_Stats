@@ -98,8 +98,8 @@ const teams = {
     mapleleafs: {
         id: 10,
         logo: `${MapleleafsLogo}`,
-        primaryColor: '#00205b',
-        secondaryColor: '#FFF',
+        primaryColor: '#FFF',
+        secondaryColor: '#00205b',
         tertiaryColor: '#FFF'
     },
     hurricanes: {
@@ -119,8 +119,8 @@ const teams = {
     lightning: {
         id: 14,
         logo: `${LightningLogo}`,
-        primaryColor: '#002868',
-        secondaryColor: '#FFF',
+        primaryColor: '#FFF',
+        secondaryColor: '#002868',
         tertiaryColor: '#FFF'
     },
     capitals: {
@@ -203,8 +203,8 @@ const teams = {
     kings: {
         id: 26,
         logo: `${KingsLogo}`,
-        primaryColor: '#111',
-        secondaryColor: '#FFF',
+        primaryColor: '#FFF',
+        secondaryColor: '#111',
         tertiaryColor: '#FFF'
     },
     sharks: {

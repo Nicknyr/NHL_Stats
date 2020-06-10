@@ -84,19 +84,23 @@ export default function Roster() {
     let player = players;
     let stats = playerStats;
 
-    console.log(playerStats);
+    let statsArr = [];
+    let hits = [];
+    let goals = [];
+    let assists = [];
+    let points = [];
 
-    let data = playerStats.map((x) => {
-       return x[0];
-    })
+    for (let value of Object.values(playerStats)) {
+            //points.push(value[0].points);
+            console.log(value);
+    }
 
-    let data2 = data.map((x) => {
-        return x;
-    });
+    
 
-    console.log(data2);
+    //console.log(statsArr.map((x) => x)); 
 
-    let blah = data2.forEach((item) => console.log(item.stat.points));
+    
+    //console.log(statsArr[0]);
 
     return (
         <div>
@@ -127,13 +131,9 @@ export default function Roster() {
                                 {player[0].fullName}
                             </TableCell>
                             <TableCell align="left" className={classes.tableContent}>{player[0].primaryPosition.name}</TableCell>
-                            {Object.values(stats).map((x, key) => (
+                            {points.map((point, key) => (
                                 <>
-                                {/*
-                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.points}</TableCell>
-                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.goals}</TableCell>
-                                <TableCell align="left" className={classes.tableContent}>{x[0].splits[0].stat.assists}</TableCell>
-                                */}
+                                <TableCell align="left" className={classes.tableContent}>{point}</TableCell>
                                 </>
                             ))}
                             <TableCell align="left" className={classes.tableContent}>{player[0].currentAge}</TableCell>

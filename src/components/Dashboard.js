@@ -32,6 +32,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import Icon from '@material-ui/core/Icon';
 import TeamStats from './TeamStats';
 import ScrollAnimation from 'react-animate-on-scroll';
+import HomeIcon from '@material-ui/icons/Home';
 
 const drawerWidth = 240;
 
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
+    background: '#181818'
   },
   toolbarIcon: {
     display: 'flex',
@@ -122,6 +124,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  logoImg: {
+    maxHeight: '100%',
+    maxWidth: '100%'
+  },
   rosterContainer: {
     background: theme.palette.secondary.main
   },
@@ -162,8 +168,6 @@ export default function Dashboard() {
   }, [changeTheme, location]);
 
 
-
-
   return (
     <>
     <div className={classes.root}>
@@ -179,6 +183,9 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
+          <Link href="#">
+            <HomeIcon color="red" style={{ fontSize: 30 }} />
+          </Link>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             {teamCapitalized} Team Stats
           </Typography>
@@ -209,11 +216,11 @@ export default function Dashboard() {
               <Grid item xs={12} md={4} lg={3}>
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                   <Paper className={[fixedHeightPaper, classes.teamLogo]} elevation="10">
-                    {location === '/' ? '' : <img src={teams[team].logo}/>} 
+                    {location === '/' ? '' : <img src={teams[team].logo} className={classes.logoImg} />} 
                   </Paper>
                 </ScrollAnimation>
               </Grid>
-            {/* Chart */}
+            {/* Franchise Info */}
               <Grid item xs={12} md={8} lg={9}>
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                   <Paper className={fixedHeightPaper} elevation="10">
