@@ -103,8 +103,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(10),
     background: theme.palette.primary.main
   },
   paper: {
@@ -130,9 +130,6 @@ const useStyles = makeStyles((theme) => ({
   },
   rosterContainer: {
     background: theme.palette.secondary.main
-  },
-  teamLogos: {
-  
   }
 }));
 

@@ -7,8 +7,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
+import { SvgIcon } from '@material-ui/core';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 
-export default function AwardsModal() {
+export default function AwardsModal(props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -21,6 +24,8 @@ export default function AwardsModal() {
     setOpen(false);
   };
 
+  //console.log('props passed to AwardModal : ' + props.description);
+
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -32,21 +37,27 @@ export default function AwardsModal() {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogActions>
+            <Button autoFocus onClick={handleClose} color="primary">
+            <CancelOutlinedIcon fontSize="large" style={{ color: '#D81E5B' }}/>
+            </Button>
+        </DialogActions>
+        <DialogTitle id="responsive-dialog-title">
+            <Typography variant="h5">{props.award}</Typography>
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            {props.description}
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
+        <DialogTitle id="responsive-dialog-title">
+            <Typography variant="h5">History</Typography>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {props.history}
+          </DialogContentText>
+        </DialogContent>
       </Dialog>
     </div>
   );

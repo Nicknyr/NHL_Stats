@@ -107,7 +107,8 @@ const useStyles = makeStyles((theme) => ({
     container: {
       paddingTop: theme.spacing(4),
       paddingBottom: theme.spacing(4),
-      background: theme.palette.primary.main
+      background: theme.palette.primary.main,
+      height: '500vh'
     },
     paper: {
       padding: theme.spacing(2),
@@ -249,8 +250,7 @@ export default function Dashboard() {
                     <Box align="center">
                        <img src={WesternConference} height="100" alt="Western Conference Logo" />
                        <Typography variant="h4">Best in the West</Typography>
-                       <p>{teams.westernConferenceLeader.primaryColor}</p>
-                       {/*<img src={teams.westernConferenceLeader.logo}/>*/}
+                       
                     </Box>
                 </Paper>
             </Grid>
@@ -259,7 +259,7 @@ export default function Dashboard() {
                     <Box align="center">
                         <img src={EasternConference} height="100" alt="Eastern Conference Logo" />
                         <Typography variant="h4">Beast in the East</Typography>
-                        <img src={teams.bruins.logo} />
+                        
                     </Box>
                 </Paper>
             </Grid>

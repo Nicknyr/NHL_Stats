@@ -30,6 +30,8 @@ import FranchiseInfo from './FranchiseInfo';
 import Awards from './Awards';
 import AwardsModal from './AwardsModal';
 import Footer from './Footer';
+import NHLLogo from '../assets/nhl-logo.svg';
+import ScrollAnimation from 'react-animate-on-scroll';
 
   
   const drawerWidth = 240;
@@ -99,8 +101,8 @@ import Footer from './Footer';
       overflow: 'auto',
     },
     container: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(4),
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(10),
     },
     paper: {
       padding: theme.spacing(2),
@@ -112,14 +114,12 @@ import Footer from './Footer';
     fixedHeight: {
       height: 240,
     },
-    teamLogo: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
     card: {
-        maxWidth: '25%',
-        margin: '1rem'
+        margin: '1rem',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '620px'
     }
   }));
   
@@ -140,45 +140,33 @@ import Footer from './Footer';
 
     let awards = Object.values(awardData).map((award) => {
         return (
-            <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Award information"
-                height="300"
-                image={award.imageUrl}
-                title={award.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {award.name}
-                </Typography>
-                {/*
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {award.description}
-                </Typography>
-                <Typography variant="body2"  color="textSecondary" component="p" >
-                    {award.history}
-                </Typography>
-                */}
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <AwardsModal />
-              {/*
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-              */}
-            </CardActions>
-          </Card>
+            <Grid item xs={12} sm={6} md={4}>
+              <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Award information"
+                      height="450"
+                      image={award.imageUrl}
+                      title={award.name}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                          {award.name}
+                      </Typography>
+                    </CardContent>
+                   </CardActionArea>
+                    <CardActions>
+                      {/* Pop up modal containing description/history for each award */}
+                      <AwardsModal award={award.name} description={award.description} history={award.history} />
+                    </CardActions>
+                  </Card>
+            </ScrollAnimation>
+            </Grid>
         );
     })
 
-    console.log(awardData);
-    console.log('awards : ' + awards);
-
-  
     const handleDrawerOpen = () => {
       setOpen(true);
     };
@@ -232,16 +220,13 @@ import Footer from './Footer';
             <Container maxWidth="lg" className={classes.container}>
               <Grid container spacing={3}>
                 {/* Awards */}
-                <Grid item xs={12}>
-                  <Paper className={classes.paper}>
-                    {awards}
-                  </Paper>
-                </Grid>
+                <Paper className={classes.paper}>
+                  {awards}
+                </Paper>
               </Grid>
             </Container>
           </main>
         </div>
-        <AwardsModal />
       <Footer />
       </>
     );

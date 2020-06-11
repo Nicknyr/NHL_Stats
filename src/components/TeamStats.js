@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         marginTop: '1rem',
         marginBottom: '1rem',
-        height: '12rem'
+        height: '12rem',
+        justifyContent: 'space-around'
     },
     stat: {
         //fontSize: '2rem'
