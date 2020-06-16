@@ -33,74 +33,23 @@ import Icon from '@material-ui/core/Icon';
 import TeamStats from './TeamStats';
 import ScrollAnimation from 'react-animate-on-scroll';
 import HomeIcon from '@material-ui/icons/Home';
+import Navbar from './Navbar';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
-  },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-    background: '#181818'
-  },
-  toolbarIcon: {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
+    width: '100%'
   },
   title: {
     flexGrow: 1,
   },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    background: '#181818',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
-  },
-  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100%',
     overflow: 'auto',
+    width: '100%'
   },
   container: {
     paddingTop: theme.spacing(10),
@@ -116,9 +65,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'snow',
     fontWeight: 'bold'
   },
-  fixedHeight: {
-    height: 240
-  },
   teamLogo: {
     display: 'flex',
     alignItems: 'center',
@@ -130,21 +76,17 @@ const useStyles = makeStyles((theme) => ({
   },
   rosterContainer: {
     background: theme.palette.secondary.main
+  },
+  fixedHeightPaper: {
+    //height: '200px',
+    //width: '200px'
   }
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
   const changeTheme = useChangeTheme();
-  const [open, setOpen] = React.useState(true);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const location = useLocation();
@@ -167,44 +109,9 @@ export default function Dashboard() {
 
   return (
     <>
+    <Navbar />
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link href="#">
-            <HomeIcon color="red" style={{ fontSize: 30 }} />
-          </Link>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            {teamCapitalized} Team Stats
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon/>
-          </IconButton>
-        </div>
-        <Divider />
-        <List className={classes.teamLogos}>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
