@@ -133,11 +133,11 @@ export default function Navbar() {
                 <Typography variant="h6" className={classes.title}>
                     NHL Stats
                 </Typography>
-                {/*
+                
                 <Link href="#">
                     <Typography variant="h6">Team </Typography>
                 </Link>
-                */}
+                
             </Toolbar>
         </AppBar>
     );
