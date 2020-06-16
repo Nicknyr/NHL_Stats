@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Switch, Route, Link, useLocation } from "react-router-dom";
+import { Switch, Route, Link, useLocation, NavLink } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { useChangeTheme } from "./Theme";
@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     },
     navbar: {
         background: '#181818'
+    },
+    link: {
+        color: 'snow',
+        //textDecoration: 'none'
     }
   }));
 
@@ -92,17 +96,17 @@ export default function Navbar() {
                 <>
                   <ListItem button>
                     <ListItemIcon>
-                        <Link to="/leaderboards">Leaderboards</Link>
+                        <Link to="/leaderboards" className={classes.link}>Leaderboards</Link>
                     </ListItemIcon>
                   </ListItem>
                   <ListItem button>
                     <ListItemIcon>
-                        <Link to="/historical">Historical Stats</Link>
+                        <Link to="/historical" className={classes.link}>Historical Stats</Link>
                     </ListItemIcon>
                   </ListItem>
                   <ListItem button>
                     <ListItemIcon>
-                        <Link to="/awards">NHL Awards</Link>
+                        <Link to="/awards" className={classes.link}>NHL Awards</Link>
                     </ListItemIcon>
                   </ListItem>
                 </>

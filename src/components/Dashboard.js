@@ -40,7 +40,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    width: '100%'
+    width: '100%',
+    //background: '#181818'
   },
   title: {
     flexGrow: 1,
@@ -68,7 +69,9 @@ const useStyles = makeStyles((theme) => ({
   teamLogo: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    background: theme.palette.secondary.main,
+    height: '300px'
   },
   logoImg: {
     maxHeight: '100%',
@@ -77,9 +80,8 @@ const useStyles = makeStyles((theme) => ({
   rosterContainer: {
     background: theme.palette.secondary.main
   },
-  fixedHeightPaper: {
-    //height: '200px',
-    //width: '200px'
+  fixedHeight: {
+    height: '300px'
   }
 }));
 
@@ -117,15 +119,15 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Team Logo */}
-              <Grid item xs={12} md={4} lg={3}>
+              <Grid item xs={12} sm={4} md={4} lg={3}>
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
-                  <Paper className={[fixedHeightPaper, classes.teamLogo]} elevation="10">
+                  <Paper className={classes.teamLogo} elevation="10">
                     {location === '/' ? '' : <img src={teams[team].logo} className={classes.logoImg} />} 
                   </Paper>
                 </ScrollAnimation>
               </Grid>
             {/* Franchise Info */}
-              <Grid item xs={12} md={8} lg={9}>
+              <Grid item xs={12} sm={8} md={8} lg={9}>
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                   <Paper className={fixedHeightPaper} elevation="10">
                     {location === '/' ? '' : <FranchiseInfo />}  

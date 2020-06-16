@@ -17,14 +17,15 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
     },
     container: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         background: theme.palette.primary.main,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%'
     },
     paper: {
         padding: theme.spacing(1),
@@ -137,8 +138,8 @@ export default function TeamStats() {
 
     return (
         <Container maxWidth="lg" className={classes.container}>
-            <Grid container xs={12}  spacing={3}>
-                <Grid item xs={12} md={12} lg={4}>
+            <Grid container xs={12} spacing={3}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -149,7 +150,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -160,7 +161,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -171,7 +172,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -184,7 +185,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -197,7 +198,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -208,7 +209,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
@@ -219,7 +220,7 @@ export default function TeamStats() {
                         </Paper>
                     </ScrollAnimation>
                 </Grid>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">

@@ -38,9 +38,21 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: '60vh',
+    height: '100vh',
     background: '#181818',
-   //borderTop: `2px solid ${theme.palette.secondary.main}`
+    //borderTop: `2px solid ${theme.palette.secondary.main}`
+    [theme.breakpoints.up('md')]: {
+      height: '60vh'
+    },
+
+    [theme.breakpoints.up('xl')]: {
+      height: '30vh'
+    }
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   section: {
     display: 'flex',
@@ -50,73 +62,86 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     background: '#1F1F1F',
     color: 'snow',
-    height: '20em'
+    height: '20em',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  header: {
+    padding: '.5rem'
+  },
+  socialMedia: {
+    margin: '1rem',
+  },
+  socialIcon: {
+    margin: '.5rem'
   }
 }));
 
 export default function Footer() {
   const classes = useStyles();
-  const changeTheme = useChangeTheme();
-
-  const location = useLocation();
-
-
-  // Applies theme based on
-  React.useEffect(() => {
-    let path = location && location.pathname.split("/");
-    let team = path && path[1];
-    changeTheme({ colors: team.toUpperCase() });
-  }, [changeTheme, location]);
  
   return (
     <div className={classes.root}>
+     <Container maxWidth="lg" className={classes.container}>
       <Grid container>
         <Grid container xs={12} md={6} className={classes.section} display="flex" justifyContent="center">
-          <Grid item md={10}>
+          <Grid item xs={10} sm={8} md={10} >
             <Paper elevation="10" className={classes.paper} align="center">
               <Box align="center" display="flex" flexDirection="column" width="50%">
-                {/*<Typography variant="h2">About</Typography>*/}
+              <Typography variant="h4" className={classes.header}>The App</Typography>
                 <Typography variant="body">
                   This app is built with the NHL API. Stats are retrieved directly from the NHL database and displayed here.
+                </Typography>
+                <br/>
+                <Typography variant="body">
+                  More information about the API and the data available can be found
+                  <Link to="https://gitlab.com/dword4/nhlapi"> here</Link>.
                 </Typography>
               </Box>
             </Paper>
           </Grid>
         </Grid>
         <Grid container xs={12} md={6} className={classes.section} display="flex" justifyContent="center">
-          <Grid item md={10}>
+          <Grid item xs={10} sm={8} md={10} >
               <Paper elevation="10" className={classes.paper} align="center">
                 <Box align="center" display="flex" flexDirection="column" width="50%">
-                  <Typography variant="h2">About</Typography>
+                  <Typography variant="h4" className={classes.header}>The Dev</Typography>
                   <Typography variant="body">
-                    This app is built with the NHL API. Stats are retrieved directly from the NHL database and displayed here.
+                    My name is Nick Kinlen and I am a lifelong hockey fan and web developer from New York. 
                   </Typography>
-                  <Link href="#">
-                    <FontAwesomeIcon
-                          icon={['fab', 'stack-overflow']}
-                          size="2x"
-                          color="#D81E5B"
-                      />
-                  </Link>
-                  <Link href="#">
-                    <FontAwesomeIcon
-                          icon={['fab', 'github']}
-                          size="2x"
-                          color="#D81E5B"
-                      />
-                  </Link>
-                  <Link href="#">
-                    <FontAwesomeIcon
-                          icon={['fab', 'linkedin']}
-                          size="2x"
-                          color="#D81E5B"
-                      />
-                  </Link>
+                  <Box display="flex" flexDirection="row" justifyContent="center" className={classes.socialMedia}>
+                    <Link href="#">
+                      <FontAwesomeIcon
+                            icon={['fab', 'stack-overflow']}
+                            size="2x"
+                            color="#D81E5B"
+                            className={classes.socialIcon}
+                        />
+                    </Link>
+                    <Link href="#">
+                      <FontAwesomeIcon
+                            icon={['fab', 'github']}
+                            size="2x"
+                            color="#D81E5B"
+                            className={classes.socialIcon}
+                        />
+                    </Link>
+                    <Link href="#">
+                      <FontAwesomeIcon
+                            icon={['fab', 'linkedin']}
+                            size="2x"
+                            color="#D81E5B"
+                            className={classes.socialIcon}
+                        />
+                    </Link>
+                  </Box>
                 </Box>
               </Paper>
           </Grid>
         </Grid>
       </Grid>
+      </Container>
     </div>
   );
 }
