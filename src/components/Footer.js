@@ -69,12 +69,6 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     padding: '.5rem'
-  },
-  socialMedia: {
-    margin: '1rem',
-  },
-  socialIcon: {
-    margin: '.5rem'
   }
 }));
 
@@ -84,7 +78,6 @@ export default function Footer() {
   return (
     <div className={classes.root}>
      <Container maxWidth="lg" className={classes.container}>
-      <Grid container>
         <Grid container xs={12} md={6} className={classes.section} display="flex" justifyContent="center">
           <Grid item xs={10} sm={8} md={10} >
             <Paper elevation="10" className={classes.paper} align="center">
@@ -102,45 +95,6 @@ export default function Footer() {
             </Paper>
           </Grid>
         </Grid>
-        <Grid container xs={12} md={6} className={classes.section} display="flex" justifyContent="center">
-          <Grid item xs={10} sm={8} md={10} >
-              <Paper elevation="10" className={classes.paper} align="center">
-                <Box align="center" display="flex" flexDirection="column" width="50%">
-                  <Typography variant="h4" className={classes.header}>The Dev</Typography>
-                  <Typography variant="body">
-                    My name is Nick Kinlen and I am a lifelong hockey fan and web developer from New York. 
-                  </Typography>
-                  <Box display="flex" flexDirection="row" justifyContent="center" className={classes.socialMedia}>
-                    <Link href="#">
-                      <FontAwesomeIcon
-                            icon={['fab', 'stack-overflow']}
-                            size="2x"
-                            color="#D81E5B"
-                            className={classes.socialIcon}
-                        />
-                    </Link>
-                    <Link href="#">
-                      <FontAwesomeIcon
-                            icon={['fab', 'github']}
-                            size="2x"
-                            color="#D81E5B"
-                            className={classes.socialIcon}
-                        />
-                    </Link>
-                    <Link href="#">
-                      <FontAwesomeIcon
-                            icon={['fab', 'linkedin']}
-                            size="2x"
-                            color="#D81E5B"
-                            className={classes.socialIcon}
-                        />
-                    </Link>
-                  </Box>
-                </Box>
-              </Paper>
-          </Grid>
-        </Grid>
-      </Grid>
       </Container>
     </div>
   );
