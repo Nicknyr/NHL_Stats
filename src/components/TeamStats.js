@@ -15,6 +15,7 @@ import axios from 'axios';
 import teams from './Teams';
 import ScrollAnimation from 'react-animate-on-scroll';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -42,8 +43,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-around'
     },
     header: {
-        //marginTop: '2rem',
-        marginBottom: '2rem'
+        marginTop: '1rem',
+        marginBottom: '2rem',
+        fontWeight: theme.typography.fontWeightBold
     },
     split: {
         //border: '5px solid red',
@@ -51,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-around',
         alignItems: 'center'
     },
-    stat: {
-        //fontSize: '2rem'
+    divider: {
+        width: '1px',
+        background: '#FFF'
     }
       
 }));
@@ -147,6 +150,7 @@ export default function TeamStats() {
 
     return (
         <Container maxWidth="lg" className={classes.container}>
+                  <CssBaseline />
             <Grid container xs={12} spacing={3}>
                 <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
@@ -159,7 +163,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.goalsPerGame}</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.goalsPerGame} in league</Typography>
                                     </Grid>
@@ -179,7 +183,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.goalsAgainstPerGame}</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.goalsAgainstPerGame} in league</Typography>
                                     </Grid>
@@ -199,7 +203,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.ptPctg}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.ptPctg} in league</Typography>
                                     </Grid>
@@ -219,7 +223,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.powerPlayPercentage}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.powerPlayPercentage} in league</Typography>
                                         {/*
@@ -243,7 +247,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.penaltyKillPercentage}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.penaltyKillPercentage} in league</Typography>
                                          {/*
@@ -267,7 +271,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.faceOffWinPercentage}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.faceOffWinPercentage} in league</Typography>
                                     </Grid>
@@ -287,7 +291,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.savePctg}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.savePctRank} in league</Typography>
                                     </Grid>
@@ -307,7 +311,7 @@ export default function TeamStats() {
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.shootingPctg}%</Typography>
                                     </Grid>
-                                    <Divider orientation="vertical" flexItem />
+                                    <Divider orientation="vertical" flexItem className={classes.divider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h6">{teamPlaceInLeague.shootingPctRank} in league</Typography>
                                     </Grid>
