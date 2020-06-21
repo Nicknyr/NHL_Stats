@@ -25,20 +25,31 @@ const useStyles = makeStyles((theme) => ({
         background: theme.palette.primary.main,
         display: 'flex',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
+        height: '100%'
     },
     paper: {
         padding: theme.spacing(1),
         display: 'flex',
         overflow: 'auto',
-        flexDirection: 'column',
+        //flexDirection: 'column',
         background: theme.palette.secondary.main,
         color: 'snow',
         fontWeight: 'bold',
-        marginTop: '1rem',
-        marginBottom: '1rem',
+       // marginTop: '1rem',
+       // marginBottom: '1rem',
         height: '12rem',
         justifyContent: 'space-around'
+    },
+    header: {
+        //marginTop: '2rem',
+        marginBottom: '2rem'
+    },
+    split: {
+        //border: '5px solid red',
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
     stat: {
         //fontSize: '2rem'
@@ -65,8 +76,6 @@ export default function TeamStats() {
             .then(async res => {
                 setTeamStats(res.data.stats[0].splits[0].stat);
                 setTeamPlaceInLeague(res.data.stats[1].splits[0].stat);
-                console.log(res.data.stats[0].splits[0].stat);
-                console.log(res.data.stats[1].splits[0].stat);
             })
             .catch(err => {
                 console.log('Error retrieving team stats : ' + err);
@@ -143,9 +152,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Goals Per Game</Typography>
-                                <Typography variant="h3">{teamStats.goalsPerGame}</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.goalsPerGame} in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Goals Per Game</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.goalsPerGame}</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.goalsPerGame} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -154,9 +172,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Goals Against Per Game</Typography>
-                                <Typography variant="h3">{teamStats.goalsAgainstPerGame}</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.goalsAgainstPerGame} in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Goals Against Per Game</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.goalsAgainstPerGame}</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.goalsAgainstPerGame} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -165,9 +192,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Point Percentage</Typography>
-                                <Typography variant="h3">{teamStats.ptPctg}</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.ptPctg} in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Point Percentage</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.ptPctg}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.ptPctg} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -176,11 +212,22 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Power Play</Typography>
-                                <Typography variant="h3">{teamStats.powerPlayPercentage}%</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.powerPlayPercentage}  best PP in league</Typography>
-                                <Typography variant="body1">{teamStats.powerPlayGoals} goals on {teamStats.powerPlayOpportunities} attempts</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.powerPlayOpportunities} most penalties drawn in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Power Play</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.powerPlayPercentage}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.powerPlayPercentage} in league</Typography>
+                                        {/*
+                                        <Typography variant="body1">{teamStats.powerPlayGoals} goals on {teamStats.powerPlayOpportunities} attempts</Typography>
+                                        <Typography variant="body1">{teamPlaceInLeague.powerPlayOpportunities} most penalties drawn in league</Typography>
+                                        */}
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -189,11 +236,22 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Penalty Kill</Typography>
-                                <Typography variant="h3">{teamStats.penaltyKillPercentage}%</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.penaltyKillPercentage} best PK in league</Typography>
-                                <Typography variant="body1">{teamStats.powerPlayGoalsAgainst} goals against</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.penaltyKillOpportunities} most penalized team</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Penalty Kill</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.penaltyKillPercentage}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.penaltyKillPercentage} in league</Typography>
+                                         {/*
+                                        <Typography variant="body1">{teamStats.powerPlayGoalsAgainst} goals against</Typography>
+                                        <Typography variant="body1">{teamPlaceInLeague.penaltyKillOpportunities} most penalized team</Typography>
+                                        */}
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -202,9 +260,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Face Offs</Typography>
-                                <Typography variant="h3">{teamStats.faceOffWinPercentage}%</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.faceOffWinPercentage} best in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Face Offs</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.faceOffWinPercentage}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.faceOffWinPercentage} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -213,9 +280,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Save Percentage</Typography>
-                                <Typography variant="h3">{teamStats.savePctg}%</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.savePctRank} best in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Save Percentage</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.savePctg}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.savePctRank} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>
@@ -224,9 +300,18 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Typography variant="h5">Shooting Percentage</Typography>
-                                <Typography variant="h3">{teamStats.shootingPctg}%</Typography>
-                                <Typography variant="body1">{teamPlaceInLeague.shootingPctRank} best in league</Typography>
+                                <Grid container display="flex" justify="space-around">
+                                    <Grid item xs={12} className={classes.header}>
+                                        <Typography variant="h5">Shooting Percentage</Typography>
+                                    </Grid>
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h3">{teamStats.shootingPctg}%</Typography>
+                                    </Grid>
+                                    <Divider orientation="vertical" flexItem />
+                                    <Grid item xs={5} className={classes.split}>
+                                        <Typography variant="h6">{teamPlaceInLeague.shootingPctRank} in league</Typography>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Paper>
                     </ScrollAnimation>

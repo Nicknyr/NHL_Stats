@@ -16,7 +16,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Drawer from '@material-ui/core/Drawer';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -130,16 +129,6 @@ export default function Navbar() {
                 {['top'].map((anchor) => (
                     <React.Fragment key={anchor}>
                         <MenuIcon onClick={toggleDrawer(anchor, true)}>{anchor}</MenuIcon>
-                        {/*
-                        <SwipeableDrawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                        onOpen={toggleDrawer(anchor, true)}
-                        >
-                        {list(anchor)}
-                        </SwipeableDrawer>
-                        */}
                         <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
                             {list(anchor)}
                         </Drawer>
