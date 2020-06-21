@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     link: {
         color: 'snow',
         //textDecoration: 'none'
+    },
+    icon: {
+        display: 'flex',
+        justifyContent: 'center'
     }
   }));
 
@@ -84,7 +88,9 @@ export default function Navbar() {
                 {Object.values(teams).map((team) => (
                 <ListItem className={classes.team} button key={team.id}>
                     <Link to={`/${team.name}`}>
-                        <ListItemIcon><img src={team.logo} height="50" width="50"/></ListItemIcon>
+                        <ListItemIcon className={classes.icon}>
+                            <img src={team.logo} height="40" width="40"/>
+                        </ListItemIcon>
                     </Link>
                 </ListItem>
                 ))}
