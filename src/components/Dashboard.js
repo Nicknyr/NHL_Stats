@@ -34,6 +34,7 @@ import TeamStats from './TeamStats';
 import ScrollAnimation from 'react-animate-on-scroll';
 import HomeIcon from '@material-ui/icons/Home';
 import Navbar from './Navbar';
+import RecentGames from './RecentGames';
 
 const drawerWidth = 240;
 
@@ -145,6 +146,14 @@ export default function Dashboard() {
                 <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                   <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
                     {location === '/' ? '' : <Roster />}
+                  </Paper>
+                </ScrollAnimation>
+              </Grid>
+              {/* Recent Games */}
+              <Grid item xs={12}>
+                <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
+                <Paper className={[classes.paper, classes.rosterContainer]} elevation="10">
+                    {location === '/' ? '' : <RecentGames />}
                   </Paper>
                 </ScrollAnimation>
               </Grid>

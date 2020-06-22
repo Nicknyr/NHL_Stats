@@ -92,7 +92,7 @@ export default function Roster() {
 
     for (let value of Object.values(playerStats)) {
             //points.push(value[0].points);
-            console.log(value);
+            //console.log(value);
     }
 
     

@@ -120,7 +120,7 @@ export default function Navbar() {
         </div>
           );
     
-    console.log('teams : ' + Object.values(teams).map((x) => x.logo));
+    //console.log('teams : ' + Object.values(teams).map((x) => x.logo));
 
     return (
         <AppBar position="static" className={classes.navbar}>
