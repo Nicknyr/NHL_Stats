@@ -42,9 +42,12 @@ const useStyles = makeStyles((theme) => ({
         height: '12rem',
         justifyContent: 'space-around'
     },
+    innerContainer: {
+        height: '100%'
+    },
     header: {
         marginTop: '1rem',
-        marginBottom: '2rem',
+        //marginBottom: '.5rem',
         fontWeight: theme.typography.fontWeightBold
     },
     split: {
@@ -55,9 +58,14 @@ const useStyles = makeStyles((theme) => ({
     },
     divider: {
         width: '1px',
+        background: '#FFF',
+        height: '50%'
+    },
+    middleDivider: {
+        width: '100%',
+        height: '1px',
         background: '#FFF'
     }
-      
 }));
 
 export default function TeamStats() {
@@ -150,16 +158,16 @@ export default function TeamStats() {
 
     return (
         <Container maxWidth="lg" className={classes.container}>
-                  <CssBaseline />
             <Grid container xs={12} spacing={3}>
                 <Grid item xs={12} sm={6} md={6} lg={4}>
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Goals Per Game</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.goalsPerGame}</Typography>
                                     </Grid>
@@ -176,10 +184,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Goals Against Per Game</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.goalsAgainstPerGame}</Typography>
                                     </Grid>
@@ -196,10 +205,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Point Percentage</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.ptPctg}%</Typography>
                                     </Grid>
@@ -216,10 +226,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Power Play</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.powerPlayPercentage}%</Typography>
                                     </Grid>
@@ -240,10 +251,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Penalty Kill</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.penaltyKillPercentage}%</Typography>
                                     </Grid>
@@ -264,10 +276,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Face Offs</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.faceOffWinPercentage}%</Typography>
                                     </Grid>
@@ -284,10 +297,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Save Percentage</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.savePctg}%</Typography>
                                     </Grid>
@@ -304,10 +318,11 @@ export default function TeamStats() {
                     <ScrollAnimation animateIn="fadeIn" delay="1000" animateOnce>
                         <Paper  elevation="10" className={classes.paper}>
                             <Box align="center">
-                                <Grid container display="flex" justify="space-around">
+                                <Grid container display="flex" justify="space-around" className={classes.innerContainer}>
                                     <Grid item xs={12} className={classes.header}>
                                         <Typography variant="h5">Shooting Percentage</Typography>
                                     </Grid>
+                                    <Divider variant="middle" className={classes.middleDivider} />
                                     <Grid item xs={5} className={classes.split}>
                                         <Typography variant="h3">{teamStats.shootingPctg}%</Typography>
                                     </Grid>
