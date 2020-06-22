@@ -1,15 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { Switch, Route, Link, useLocation } from "react-router-dom";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { useLocation } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import { useChangeTheme } from "./Theme";
 import axios from 'axios';
 import teams from './Teams';
@@ -91,7 +88,7 @@ export default function TeamStats() {
             .catch(err => {
                 console.log('Error retrieving team stats : ' + err);
             })
-    }, []);
+    }, [teams, teamName]);
 
 
     /*

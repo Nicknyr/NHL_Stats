@@ -44,7 +44,7 @@ export default function FranchiseInfo() {
             .catch(err => {
                 console.log('Error retrieving franchise data');
             })
-    }, [])
+    }, [teams, teamNameFromQuery])
 
     useEffect(() => {
         axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${teams[teamNameFromQuery].id}/stats?stats=statsSingleSeason&season=20192020
@@ -56,7 +56,7 @@ export default function FranchiseInfo() {
             .catch(err => {
                 console.log('Error retrieving team record data');
             })
-    }, []);
+    }, [teams, teamNameFromQuery]);
     
     //console.log(teamRecordData);
     //console.log(franchiseData);

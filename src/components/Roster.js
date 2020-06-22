@@ -8,8 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import teams from './Teams';
-import { Switch, Route, Link, useLocation } from "react-router-dom";
-import { fade, makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { useLocation } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import { useChangeTheme } from "./Theme";
 
 
@@ -70,7 +70,7 @@ export default function Roster() {
         .catch(err => {
             console.log('Error : ' + err);
         })
-    }, []);
+    }, [teams, teamName]);
 
    // Theme
    const changeTheme = useChangeTheme();

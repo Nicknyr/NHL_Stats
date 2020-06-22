@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from "redux-thunk";
-import logger from 'redux-logger';
-import reducers from './reducers';
 import { BrowserRouter } from "react-router-dom";
 import { Router, Route, Switch } from 'react-router-dom';
 import Awards from './components/Awards';
@@ -14,16 +9,9 @@ import * as serviceWorker from './serviceWorker';
 import Dashboard from './components/Dashboard';
 import LandingPage from './components/LandingPage';
 import { ThemeProvider } from "./components/Theme";
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-const store = createStore(reducers, composeEnhancers(
-    applyMiddleware(thunk, logger)
-));
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
       <ThemeProvider>
         <BrowserRouter>
           <Switch>
@@ -64,7 +52,6 @@ ReactDOM.render(
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
-    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,5 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +13,7 @@ import { useChangeTheme } from "./Theme";
 import axios from 'axios';
 import teams from './Teams';
 import ScrollAnimation from 'react-animate-on-scroll';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -52,11 +52,14 @@ export default function RecentGames() {
                 setPreviousGameHomeTeam(previousGameHomeTeam);
                 setPreviousGameAwayTeamScore(previousGameAwayTeamScore);
                 setPreviousGameHomeTeamScore(previousGameHomeTeamScore);
+
+                console.log(previousGameDate);
             })
             .catch((err) => {
                 console.log('Error in recent games :' + err);
             })
-    }, []);
+    }, [teams, teamName]);
+
 
     return (
         <Grid container>
