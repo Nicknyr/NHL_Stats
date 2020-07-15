@@ -16,7 +16,28 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
-
+    container: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+        //background: theme.palette.primary.main,
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%'
+    },
+    paper: {
+        padding: theme.spacing(1),
+        display: 'flex',
+        overflow: 'auto',
+        //flexDirection: 'column',
+        background: theme.palette.secondary.main,
+        color: 'snow',
+        fontWeight: 'bold',
+       // marginTop: '1rem',
+       // marginBottom: '1rem',
+        height: '12rem',
+        justifyContent: 'space-around'
+    }
 }));
 
 export default function RecentGames() {
@@ -60,15 +81,42 @@ export default function RecentGames() {
             })
     }, [teams, teamName]);
 
+    /*
+    const dateString = {previousGameDate};
+    console.log(dateString);
+
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "long", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+    }
+
+    console.log(formatDate);
+    */
+
+
+   let date = previousGameDate;
+   let previousGameDateConverted = moment(date).format("MMMM Do YYYY");
 
     return (
-        <Grid container>
-            <Typography variant="h2">Recent Games Section</Typography>
-            {previousGameDate}
-            {previousGameVenue}
-            {previousGameAwayTeam}
-            {previousGameHomeTeam}
-            {previousGameAwayTeamScore}  - {previousGameHomeTeamScore}
+        <Grid container className={classes.container}>
+            <Grid item xs={6} md={10}>
+                <Paper elevation="10" className={classes.paper}>
+                    <Box align="center">
+                        <Typography variant="h3">Recent Games</Typography>
+                        <Grid item xs={12}>
+                            <Typography variant="h6">
+                                {previousGameDateConverted} - {previousGameVenue}
+                            </Typography>
+                            <Typography variant="h5">
+                                {previousGameAwayTeam} @ {previousGameHomeTeam} 
+                            </Typography>
+                            <Typography variant="h5">
+                                {previousGameAwayTeamScore}  - {previousGameHomeTeamScore} <br/>
+                            </Typography>
+                        </Grid>
+                    </Box>
+                </Paper>
+            </Grid>
         </Grid>
     );
 }
